@@ -74,7 +74,6 @@ document.querySelector("#buy-ticket").addEventListener('click', () => {
 
 })
 //delete Title from server function 
-
 function deleteTitle(id){
   fetch(`${apiURL}/${id}`, {
     method:'DELETE'
