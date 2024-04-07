@@ -1,5 +1,5 @@
 // Your code here
-//apiURL declaration
+//apiURL
 const apiURL = 'http://localhost:3000/films'
 //fetch the data from server
 fetch(apiURL,{
@@ -11,7 +11,7 @@ fetch(apiURL,{
 //conversion to json format
 .then((response) => response.json())
 .then((data) => {
-  console.log(data)
+
 //loading the titles in the list
     const allMovieTitles = document.querySelector('#films')
     allMovieTitles.innerHTML = ''
@@ -19,24 +19,24 @@ fetch(apiURL,{
         const movieTitlesList = document.createElement('li')
         movieTitlesList.innerText = title.title
 
-        //delete button
-        const deleteTitle = document.createElement('button')
-        deleteTitle.innerText = 'Delete'
-        deleteTitle.classList.add('delete-button')
-        deleteTitle.addEventListener('click', () =>{
-          movieTitlesList.remove();
-          deleteFromServer(title.id)
+        //deleteFilm button
+        const deleteFilm = document.createElement('button')
+        deleteFilm.innerText =  'Delete'
+        deleteFilm.addEventListener('click', () =>{
+          deleteTitle(title.id)
+          movieTitlesList.remove()
         })
+        movieTitlesList.appendChild(deleteFilm)
 
         //add an eventlistener for when a particular title is selected, the showTitleInfo function is called
         movieTitlesList.addEventListener('click', () =>{
           showTitleInfo(title)
         })
+
         // finally append the titles to the list
         allMovieTitles.append(movieTitlesList)
 
         //display the first film when page is loaded
-
         if(index === 0){
           showTitleInfo(title)
         }
@@ -68,10 +68,26 @@ document.querySelector("#buy-ticket").addEventListener('click', () => {
 
   }
 
-
-//End
-
+  if (availableTickets === 0){
+    document.querySelector('#buy-ticket').innerText = 'Sold Out'
+  }
 
 })
+//delete Title from server function 
+
+function deleteTitle(id){
+  fetch(`${apiURL}/${id}`, {
+    method:'DELETE'
+  })
+  .then(response => {
+    if(response.ok){
+      alert('Title Deleted Successfullly.');
+    }else{
+      alert('Error deleting Title')
+    }
+  })
+}
+  
+
 
 
