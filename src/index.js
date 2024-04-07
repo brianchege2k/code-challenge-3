@@ -18,32 +18,27 @@ fetch(apiURL,{
     data.forEach((title, index)=> {
         const movieTitlesList = document.createElement('li')
         movieTitlesList.innerText = title.title
-
         //deleteFilm button
         const deleteFilm = document.createElement('button')
         deleteFilm.innerText =  'Delete'
         deleteFilm.addEventListener('click', () =>{
-          deleteTitle(title.id)
-          movieTitlesList.remove()
+          deleteTitle(title.id) //deletes from server
+          movieTitlesList.remove() //remove from html list
         })
-        movieTitlesList.appendChild(deleteFilm)
+        movieTitlesList.append(deleteFilm)
 
         //add an eventlistener for when a particular title is selected, the showTitleInfo function is called
         movieTitlesList.addEventListener('click', () =>{
           showTitleInfo(title)
         })
-
         // finally append the titles to the list
         allMovieTitles.append(movieTitlesList)
-
         //display the first film when page is loaded
         if(index === 0){
           showTitleInfo(title)
         }
-
     });
 })
-
 //function to display the movies
 function showTitleInfo(title){
   //selection of various id's in the HTML
@@ -67,7 +62,6 @@ document.querySelector("#buy-ticket").addEventListener('click', () => {
     allAvailableTickets.innerText = availableTickets;
 
   }
-
   if (availableTickets === 0){
     document.querySelector('#buy-ticket').innerText = 'Sold Out'
   }
@@ -78,8 +72,8 @@ function deleteTitle(id){
   fetch(`${apiURL}/${id}`, {
     method:'DELETE'
   })
-  .then(response => {
-    if(response.ok){
+  .then(resp => {
+    if(resp.ok){
       alert('Title Deleted Successfullly.');
     }else{
       alert('Error deleting Title')
