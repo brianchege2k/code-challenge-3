@@ -1,6 +1,6 @@
 // Your code here
 //apiURL
-const apiURL = 'http://localhost:3000/films'
+const apiURL = 'https://210e-105-163-158-101.ngrok-free.app/films'
 //fetch the data from server
 fetch(apiURL,{
     method: 'GET',
@@ -11,7 +11,7 @@ fetch(apiURL,{
 //conversion to json format
 .then((response) => response.json())
 .then((data) => {
-
+  console.log(typeof data)
 //loading the titles in the list
     const allMovieTitles = document.querySelector('#films')
     allMovieTitles.innerHTML = ''
@@ -81,6 +81,7 @@ function deleteTitle(id){
   })
 }
   
+
 
 
 
