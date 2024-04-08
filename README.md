@@ -1,3 +1,5 @@
+# Code Challenge 3
+
 # Flatdango
 
 Flatiron Movie Theater is open for business! You will be building out an
@@ -7,3 +9,7 @@ theater.
 ## By Brian Chege Njuguna
 
 ## Link To GitHub Pages: https://brianchege2k.github.io/code-challenge-3/
+
+
+
+
