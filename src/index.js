@@ -2,7 +2,7 @@
 //apiURL
 const apiURL = 'https://my-json-server.typicode.com/brianchege2k/code-challenge-3/films'
 //fetch the data from server
-fetch(apiURL,{
+fetch(`${apiURL}`,{
     method: 'GET',
     headers:{
         'Content-Type': 'application/json'
