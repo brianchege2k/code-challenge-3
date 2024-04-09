@@ -1,6 +1,6 @@
 // Your code here
 //apiURL
-const apiURL = 'http://localhost:3000/films'
+const apiURL = 'https://my-json-server.typicode.com/brianchege2k/code-challenge-3/films'
 //fetch the data from server
 fetch(apiURL,{
     method: 'GET',
